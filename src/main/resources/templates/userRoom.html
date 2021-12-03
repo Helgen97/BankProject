@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+  <meta charset="UTF-8">
+  <title>User page</title>
+  <link rel="shortcut icon" href="Favicon.ico" />
+</head>
+
+<body>
+<header th:insert = "parts/header :: header"></header>
+
+<div class="alert alert-dark text-center" role="alert" th:text="'Welcome ' + ${username} + '!'"></div>
+<div class="alert alert-dark text-center" role="alert" th:each="w : ${wallets}" th:utext="${w.getCurrency()} + ': ' + ${w.getValue()}" >
+</div>
+<div class="alert alert-dark text-center" role="alert" th:text="'Sum in UAH: ' + ${sum}"></div>
+
+<main class="container">
+  <div class="bg-light p-5 mt-2 rounded" th:if="${userRole}">
+    <h1>Admin page: </h1>
+    <p class="lead">Page for admin purpose: </p>
+    <a class="btn btn-lg btn-primary" href="/admin" role="button">Process &raquo;</a>
+  </div>
+  <div class="bg-light p-5 mt-2 rounded">
+    <h1>Open new wallet: </h1>
+    <p class="lead">Choose currency you need, and add new wallet to your account:</p>
+    <a class="btn btn-lg btn-primary" href="/open" role="button">Process &raquo;</a>
+  </div>
+  <div class="bg-light p-5 mt-2 rounded">
+    <h1>Add money to wallet: </h1>
+    <p class="lead">Choose currency you need and enter the amount of money you want to add:</p>
+    <a class="btn btn-lg btn-primary" href="/add" role="button">Process &raquo;</a>
+  </div>
+  <div class="bg-light p-5 mt-2 rounded">
+    <h1>Converting money: </h1>
+    <p class="lead">Choose currency to convert, amount of money, and currency in which convert:</p>
+    <a class="btn btn-lg btn-primary" href="/convert" role="button">Process &raquo;</a>
+  </div>
+  <div class="bg-light p-5 mt-2 rounded">
+    <h1>Send money: </h1>
+    <p class="lead">Choose currency to send, amount of money, receiver, and comment to receiver</p>
+    <a class="btn btn-lg btn-primary" href="/send" role="button">Process &raquo;</a>
+  </div>
+  <div class="bg-light p-5 mt-2 rounded">
+    <h1>Look for transactions was sent to you: </h1>
+    <p class="lead">Just look</p>
+    <a class="btn btn-lg btn-primary" href="/list" role="button">Process &raquo;</a>
+  </div>
+</main>
+
+
+<footer th:insert = "parts/footer :: footer"></footer>
+</body>
+</html>

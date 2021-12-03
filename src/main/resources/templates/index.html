@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <meta charset="UTF-8">
+    <title>Main Page</title>
+    <link rel="shortcut icon" href="/Favicon.ico" type="image/x-icon"/>
+</head>
+<body>
+<header th:insert = "parts/header :: header"></header>
+
+<div class="alert alert-dark text-center" role="alert" th:if="${bye} != null" th:text="${bye}"></div>
+
+<div class="bg-dark text-secondary px-4 py-5 text-center">
+    <div class="py-5">
+        <h1 class="display-5 fw-bold text-white">Welcome to the test Bank</h1>
+        <div class="col-lg-6 mx-auto">
+            <p class="fs-5 mb-4">To use all bank features please login.</p>
+            <p class="fs-5 mb-4">If you don't have an account, please, register</p>
+            <div class="d-grid gap-2 d-sm-flex justify-content-sm-center">
+                <form>
+                <button class="btn btn-outline-info btn-lg px-4 me-sm-3 fw-bold" formaction="/login" formmethod="get"
+                        type="submit">Login</button>
+                <button class="btn btn-outline-light btn-lg px-4"  formaction="/register" formmethod="get" type="submit">Register</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<footer th:insert = "parts/footer :: footer"></footer>
+</body>
+</html>
